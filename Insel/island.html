@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="rain.js"></script>
+    <script src="annyang.js"></script>
+    <script src="aframe-speech-command-component.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+</head>
+<body>
+<a-scene rain>
+    <a-assets>
+        <a-asset-item id="island" src="szene2.obj"></a-asset-item>
+        <a-asset-item id="huette" src="WoodenCabinObj.obj"></a-asset-item>
+        <a-asset-item id="mtl2" src="WoodenCabinObj.mtl"></a-asset-item>
+        <a-asset-item id="tisch" src="tisch1.obj"></a-asset-item>
+        <a-asset-item id="mtl3" src="tisch1.mtl"></a-asset-item>
+        <a-asset-item id="book" src="bookastro.obj"></a-asset-item>
+        <a-asset-item id="mtl4" src="bookastro.mtl"></a-asset-item>
+        <a-asset-item id="lampe" src="oldlight.obj"></a-asset-item>
+        <a-asset-item id="mtl5" src="oldlight.mtl"></a-asset-item>
+        <a-asset-item id="chair" src="chair1.obj"></a-asset-item>
+        <a-asset-item id="mtl6" src="chair1.mtl"></a-asset-item>
+        <audio id="meer" src="wellen.mp3"></audio>
+        <audio id="wind" src="wind.mp3"></audio>
+        <audio id="regen" src="rain.mp3"></audio>
+    </a-assets>
+    <a-entity id="annyang" annyang-speech-recognition></a-entity>
+    <a-sound src="#meer" autoplay="true" loop="true" volume="0.2"></a-sound>
+    <a-sound src="#wind" autoplay="true" loop="true" volume="0.03"></a-sound>
+    <a-sound src="#regen" autoplay="true" loop="true" volume="0.1"></a-sound>
+    <a-entity id="kamera"
+              position ="0 0 3"
+              rotation ="0 0 0"
+              camera
+              look-controls wasd-controls>
+       <a-animation attribute="position"
+                     delay="1000"
+                     dur="3000"
+                     easing="linear"
+                     to="0 2 -1"></a-animation>
+        <a-animation
+                id="camera1"
+                attribute="position"
+                delay="0"
+                begin="1000000000"
+                dur="8000"
+                easing="linear"
+                from="0 2 -1"
+                to="23.3290935519343 3 -11.205932981367637"></a-animation>
+        <a-animation
+                id="camera2"
+                attribute="position"
+                delay="0"
+                begin="1000000000"
+                dur="8000"
+                easing="linear"
+                from="23.3290935519343 3 -11.205932981367637"
+                to="0 2 -1"></a-animation>
+        <a-cursor></a-cursor>
+    </a-entity>
+
+    <!--<a-box color="green"
+           event-set__click="material.color: red; scale: 2 2 2"
+           event-set__mouseenter="material.color: blue"></a-box>-->
+
+    <a-sky id="skybox" src="Maps/himmel2.jpg"></a-sky>
+    <a-obj-model id="cabin1" position="23.3290935519343 0 -10.205932981367637" rotation="0 -64.72478385041762 0" scale="0.145 0.153 0.118" src="#huette" mtl="#mtl2" material="" obj-model="" event-set__click="target:#camera1; aevent:cabin"></a-obj-model>
+    <a-obj-model id="island2" position="0 -4.1028683684965745 0" scale="0.1 0.1 0.1" src="#island" mtl="szene2.mtl" rotation="0 179.85574218464194 0" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="table" position="24.441 0.16053645806532524 -12.161" rotation="-1.1960000000000002 -65.203800489367 0.37300000000000016" scale="0.1 0.12 0.1" src="#tisch" mtl="#mtl3" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="buch" position="25.341495428607058 2.0655935042592897 -13.091009889174074" rotation="-1.1959999999999997 -100.2293340530128 0.3729999999999999" scale="0.01 0.01 0.01" src="#book" mtl="#mtl4" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="lampe1" position="25.5575330840864 1.8588855228634031 -11.94978623497756" rotation="-1.196 -65.204 0.37300000000000005" scale="0.08623208406174157 0.09987205626724438 0.0911222512716087" src="#lampe" mtl="#mtl5" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="chair1" position="24.232207567530644 1.7961148596753174 -11.617521936277733" rotation="-1.8283632822614648 -23.72975647092918 3.2325908491005437" scale="1.3 1.7 1.3" src="#chair" mtl="#mtl6" material="" obj-model=""></a-obj-model>
+
+    <a-entity speech-command="command: go to cabin; type: attribute; targetElement: #camera1; attribute: begin; value: 0 ;"></a-entity>
+    <a-entity speech-command="command: exit cabin; type: attribute; targetElement: #camera2; attribute: begin; value: 0 ;"></a-entity>
+
+    <!--<a-entity id="monster" geometry="primitive: box" material="src: url(monster.png)"
+              look-at="[camera]"></a-entity>-->
+
+</a-scene>
+</body>
+</html>
