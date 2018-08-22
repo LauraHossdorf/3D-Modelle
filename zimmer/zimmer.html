@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
+</head>
+<body>
+
+<a-scene physics-world="gravity: 0 0 0">
+
+    <a-assets>
+        <a-asset-item id="zimmer" src="zimmer.obj"></a-asset-item>
+        <a-asset-item id="mt1" src="zimmer.mtl"></a-asset-item>
+
+
+</a-assets>
+
+    <a-entity id="kamera"
+              position="-5.097 5.810 -7.023"
+              rotation="87.573 -180.000 -137.121"
+              camera look-controls wasd-controls>
+    </a-entity>
+
+    <a-sky id="skybox" src="himmel.jpg"></a-sky>
+    <a-obj-model id="room" position="5.419 0.161 -4.740" rotation="-1.196 -65.20 0.373" scale="0.143 0.171 0.143" src="#zimmer" mtl="#mt1" material="" obj-model=""></a-obj-model>
+
+
+
+
+
+    <a-cursor></a-cursor>
+
+</a-scene>
+</body>
+</html>

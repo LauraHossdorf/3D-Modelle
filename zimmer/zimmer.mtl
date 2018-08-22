@@ -1,0 +1,134 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 17.08.2018 00:21:30
+
+newmtl 13___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka laminate.jpg
+	map_Kd laminate.jpg
+
+newmtl 19___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka walls.jpg
+	map_Kd walls.jpg
+
+newmtl 03___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka wood.jpg
+	map_Kd wood.jpg
+
+newmtl 14___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka door.jpg
+	map_Kd door.jpg
+
+newmtl 01___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka galaxy.jpg
+	map_Kd galaxy.jpg
+
+newmtl 02___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka linen.jpg
+	map_Kd linen.jpg
+
+newmtl 07___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka oldwood.jpg
+	map_Kd oldwood.jpg
+
+newmtl 08___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka aluminum.jpg
+	map_Kd aluminum.jpg
+
+newmtl 09___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka milkyglass.jpg
+	map_Kd milkyglass.jpg
+
+newmtl 15___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka window.jpg
+	map_Kd window.jpg
+
+newmtl 21___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka schirm.jpg
+	map_Kd schirm.jpg
+
+newmtl 20___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka light.jpg
+	map_Kd light.jpg
