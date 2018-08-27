@@ -14,15 +14,19 @@
 
 <body>
 <a-scene physics-world="gravity: 0 0 0">
-    <!--Bilder, Texturen, Modelle, etc.-->
+    <!--Bilder, Texturen, Modelle, etc. werden eingebunden-->
     <!---->
     <a-assets>
 
         <img id="earth" src="jpg/erde.jpg">
         <img id="moon" src="jpg/mond.jpg">
+        <img id="mars" src="jpg/mars.jpg">
+        <img id="saturn" src="jpg/saturn.jpg">
         <img id="clouds" src="jpg/clouds.jpg">
         <img id="flare-asset" src="jpg/lensflare.png">
 
+
+        <a-image id="enter" src="jpg/enter.png"></a-image>
         <a-asset-item id="astronaut" src="dae/Astronaut.dae"></a-asset-item>
         <a-asset-item id="raumstation" src="dae/Raumstation.dae"></a-asset-item>
         <a-asset-item id="geruest1" src="dae/geruest2.dae"></a-asset-item>
@@ -37,128 +41,83 @@
         <a-asset-item id="steg" src="dae/steg.dae"></a-asset-item>
         <a-asset-item id="stegG" src="dae/steggr.dae"></a-asset-item>
         <a-asset-item id="wandK" src="dae/wandkl.dae"></a-asset-item>
-        <a-asset-item id="kapsel" src="dae/weltraumkapsel.dae"></a-asset-item>
-
+        <a-asset-item id="kapsel" src="kapsel/kapsel.obj"></a-asset-item>
+        <a-asset-item id="mt1" src="kapsel/kapsel.mtl"></a-asset-item>
+        <a-sky id="galaxy" src="jpg/space.png"></a-sky>
+        <audio id="speech" src="sound/speech.mp3"></audio>
         <audio id="slow_b" src="sound/slow_breath.mp3"></audio>
     </a-assets>
 
 
     <!-- Kamera -->
     <a-entity id="kamera"
-              position ="0 20 0"
-              rotation ="0 0 0"
+              position ="-14.873 20 2.307"
+              rotation ="-15.252 -77.910 0"
               camera
               look-controls wasd-controls>
-        <a-cursor></a-cursor>
-    <a-sound src="#slow_b" autoplay="true" loop="true" volume="5"></a-sound>
+        <a-cursor material="color: white"></a-cursor>
+        <a-sound src="#slow_b" autoplay="true" loop="true" volume="1"></a-sound>
+        <a-sound src="#speech" autoplay="true" loop="false" volume="5"></a-sound>
+
+
+        <!-- Kamerafahrt um Astronaut -->
+        <a-animation begin="4000"
+                     attribute="rotation"
+                     to="-18 -60 55"
+                     dur="76000"
+                     >
+        </a-animation>
+
+        <!-- Kamerafahrt zur Station -->
+        <a-animation
+                begin="87000"
+                attribute="position"
+                from="-14.873 20 2.307"
+                to="-8.469 16.452 1.698"
+                dur="15000">
+        </a-animation>
+
+        <!-- Kamerafahrt zur Station - Kamera wieder gerade ausrichten -->
+     <a-animation
+                begin="87000"
+                attribute="rotation"
+                from="-18 -60 55"
+                to="0 0 0"
+                dur="15000">
+        </a-animation>
     </a-entity>
 
-    <a-sky id="skybox" color="#000"></a-sky>
+    <!--Einbindung von Skyboy Hintergrund-->
+    <a-sky src="#galaxy"></a-sky>
 
-    <!--Lichter-->
-    <!--<a-entity light="type: ambient; color: #BBB; intensity: 0.5" >  </a-entity>-->
+    <!--Rettungskapsel wird eingebunden-->
+    <a-obj-model id="capsule" position="-7.731 16.642 0.672" rotation="-1.203 -44.493 177.967" scale="0.010 0.010 0.010" src="#kapsel" mtl="#mt1" material="" obj-model=""></a-obj-model>
 
-    <a-entity id="m1" position="-6 40 0.986" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: red"></a-entity>
-    <a-entity id="m2" position="-6 40 5.7" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: red"></a-entity>
-    <a-entity id="m3" position="-8 40 -5" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: red"></a-entity>
-    <!--<a-collada-model id="iss" physics-body="boundingBox:1 1 1; mass:0; velocity:0 0 0" scale="0.2 0.2 0.2"  position="-9 20 0" rotation="180 90 0" src="#raumstation"></a-collada-model>-->
-<!--<a-entity  physics-body="boundingBox:7 3 7;mass:0" position="-9 20 0">
-    <a-collada-model id="iss"
-                     scale="0.2 0.2 0.2"
-                     rotation="180 90 0"
-                     src="#raumstation">
-    </a-collada-model>
-</a-entity>-->
+    <!--Meteoriten werden eingebunden-->
 
-<!--
-<a-entity id="iss" position="0.79 1 0" rotation="3.12 -72.96 0">
 
-    <a-entity id ="g1" physics-body="boundingBox:1 1 1;mass:0" position="-6.8 20.3 0.79" scale="0.2 0.2 0.2">
-        <a-collada-model src="#geruest1" scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="g2" physics-body="boundingBox:1 1 1;mass:0" position="-6.67 20.21 0.68" scale="0.2 0.2 0.2">
-        <a-collada-model src="#geruest2" scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="g21" physics-body="boundingBox:1 1 1;mass:0" position="-6.67 18.83 0.68" scale="0.2 0.2 0.2">
-        <a-collada-model src="#geruest2" scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="g3" physics-body="boundingBox:1 1 1;mass:0" position="-7.44 20.18 0.61" scale="0.2 0.2 0.2">
-        <a-collada-model  src="#geruest3" scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="g31" physics-body="boundingBox:1 1 1;mass:0" position="-7.44 18.83 0.61" scale="0.2 0.2 0.2">
-        <a-collada-model  src="#geruest3" scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="g4" physics-body="boundingBox:1 1 1;mass:0" position="-8.42 17.84 0.85" scale="0.2 0.2 0.2">
-        <a-collada-model src="#geruest4" scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="solar1">
-        <a-entity id ="solarG" physics-body="boundingBox:10 1 10 ;mass:0" position="-3 18.28 9.10"  scale="0.2 0.2 0.2">
-            <a-collada-model  src="dae/solarteilgr.dae" scale="0.2 0.2 0.2" rotation="0 -14 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="solarG2" physics-body="boundingBox:10 1 10 ;mass:0" position="-3.478 18.43 8.781"  scale="0.25 0.25 0.25">
-            <a-collada-model  src="dae/solarteilgr2.dae" scale="0.2 0.2 0.2" rotation="0 -12.93 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="solarK" physics-body="boundingBox:10 1 10 ;mass:0" position="-9.01 18.36 5.34"  scale="0.2 0.2 0.2">
-            <a-collada-model src="dae/solarteilkl.dae" scale="0.2 0.2 0.2" rotation="0 -14 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="solarK2" physics-body="boundingBox:10 1 10 ;mass:0" position="-9.41 18.36 8.19"  scale="0.2 0.2 0.2">
-            <a-collada-model  src="dae/solarteilkls.dae"  scale="0.2 0.2 0.2" rotation="0 -14 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="steg" physics-body="boundingBox:10 1 10 ;mass:0" position="-6.22 19.76 1.61" scale="0.2 0.2 0.2">
-            <a-collada-model  src="#steg"  scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-        </a-entity>
-    </a-entity>
+    <a-entity id="m1" position="-6 40 0.986" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
+    <a-entity id="m2" position="-6 40 5.7" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
+    <a-entity id="m3" position="-8 40 -5" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
 
-    <a-entity id ="solar2" position="-3.686 0 10.867" rotation ="0 180 0">
-        <a-entity id ="solarG2" physics-body="boundingBox:10 1 10 ;mass:0" position="-3 18.28 9.10"  scale="0.2 0.2 0.2">
-            <a-collada-model  src="dae/solarteilgr.dae" scale="0.2 0.2 0.2" rotation="0 -14 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="solarG22" physics-body="boundingBox:10 1 10 ;mass:0" position="-3.478 18.43 8.781"  scale="0.25 0.25 0.25">
-            <a-collada-model  src="dae/solarteilgr2.dae" scale="0.2 0.2 0.2" rotation="0 -12.93 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="solarK2" physics-body="boundingBox:10 1 10 ;mass:0" position="-9.01 18.36 5.34"  scale="0.2 0.2 0.2">
-            <a-collada-model src="dae/solarteilkl.dae" scale="0.2 0.2 0.2" rotation="0 -14 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="solarK22" physics-body="boundingBox:10 1 10 ;mass:0" position="-9.41 18.36 8.19"  scale="0.2 0.2 0.2">
-            <a-collada-model  src="dae/solarteilkls.dae"  scale="0.2 0.2 0.2" rotation="0 -14 0" ></a-collada-model>
-        </a-entity>
-        <a-entity id ="steg2" physics-body="boundingBox:10 1 10 ;mass:0" position="-6.22 19.76 1.61" scale="0.2 0.2 0.2">
-            <a-collada-model  src="#steg"  scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-        </a-entity>
-    </a-entity>
-
-    <a-entity id ="solarZK" physics-body="boundingBox:1 1 1;mass:0" position="-8.02 22.26 0.23" scale="0.2 0.2 0.2">
-        <a-collada-model  src="#solarZelleK"  scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="stegG" physics-body="boundingBox:1 1 1;mass:0" position="-9 20 0" scale="0.2 0.2 0.2">
-        <a-collada-model  src="#stegG"  scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="wandK" physics-body="boundingBox:1 1 1;mass:0" position="-6.525 20 0.958" scale="0.2 0.2 0.2">
-        <a-collada-model  src="#wandK"  scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-    <a-entity id ="kapsel" physics-body="boundingBox:1 1 1;mass:0" position="-9 20 0" scale="0.2 0.2 0.2">
-        <a-collada-model  src="#kapsel"  scale="0.2 0.2 0.2" rotation="180 0 0" ></a-collada-model>
-    </a-entity>
-</a-entity>
--->
-
+    <!-- Raumstation ISS wird eingebunden durch einzelne Objekte, um zerstört werden zu können -->
 <a-entity id="Iss_lowPoly" position="-0.028 -1.92 1.63" rotation="0 -7.85 1.85">
-    <a-entity id="" physics-body="boundingBox:0.5 0.5 10;mass:300" position="-6 20 0" geometry="primitive:box;depth:10;height:0.5;width:0.5" material="color:white"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.5 0.5 10;mass:300" position="-6 20 0" geometry="primitive:box;depth:10;height:0.5;width:0.5" material="color:grey"></a-entity>
 
 
-    <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:white"></a-entity>
-    <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 -5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:white"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:grey"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 -5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:grey"></a-entity>
 
-    <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 20.761 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:white"></a-entity>
-    <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 19.207 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:white"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 20.761 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:grey"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 19.207 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:grey"></a-entity>
 
-    <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:white"></a-entity>
-    <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 -5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:white"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:grey"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 -5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:grey"></a-entity>
 
-    <a-entity id="" physics-body="boundingBox:0.5 2.5 0.5;mass:150" position="-7.056 20 0" geometry="primitive:cylinder;height:2.5;radius:0.25" material="color:white"></a-entity>
+    <a-entity id="" physics-body="boundingBox:0.5 2.5 0.5;mass:150" position="-7.056 20 0" geometry="primitive:cylinder;height:2.5;radius:0.25" material="color:grey"></a-entity>
 
-    <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.718 21.511 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:white"></a-entity>
-    <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.686 18.422 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:white"></a-entity>
+    <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.718 21.511 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:grey"></a-entity>
+    <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.686 18.422 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:grey"></a-entity>
 
     <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-3.198 20 5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
     <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-3.198 20 -5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
@@ -167,15 +126,59 @@
 </a-entity>
 
 
+
+
+
+    <a-entity id="astronaut" collada-model="#astronaut" position="-14.415 18.995 1.723" rotation="27.330 -97.861 -3.667" scale="0.5 0.5 0.5" src="#astronaut">
+     <a-animation
+                attribute="position"
+                from="-14.415 18.995 1.723"
+                to="-14.515 19.215 1.823"
+                direction="alternate"
+                repeat="40"
+                dur="2000"
+        ></a-animation>
+
+        <a-animation
+                begin="80000"
+                attribute="position"
+                from="-14.415 18.995 1.723"
+                to="16.759 -2.148 -10.792"
+                dur="10000">
+        </a-animation>
+
+        <!--Astronaut Rotation-->
+        <a-animation
+                attribute="rotation"
+                dur="10000"
+                to="0 0 360"
+                begin="80000">
+        </a-animation>
+
+        <!--Astronaut wird kleiner-->
+        <a-animation
+                attribute="scale"
+                begin="80000"
+                dur="10000"
+                to="0 0 0">
+        </a-animation>
+
+
+    </a-entity>
+
+
+    <!--Einbinden von Sonne, Mars, Saturn, Mond und Erdatmosphäre-->
     <a-sphere id="sonne"
               radius ="0.05"
               lensflare="createLight:true; intensity:5; lightType:spot; lightDistance:120; lightAngle:1 relative: true; src: #flare-asset; position:0.0 0.0 0.06; lightColor:white"
-              position="-25 25 15"
+              position="-25 25 -23.240"
               rotation ="0 -15 0">
     </a-sphere>
 
-    <a-collada-model id="astro" position="-6.205 17.93 -0.703" scale="0.5 0.5 0.5" src="#astronaut"></a-collada-model>
-    <a-sphere id="mond" radius="4" position="98.367 35.088 2.976" opacity="0.5"  src="#moon"></a-sphere>
+
+    <a-sphere id="mond" radius="4" position="12.401 35.088 -61.392" opacity="0.5"  src="#moon"></a-sphere>
+    <a-sphere id="planetsaturn" radius="8" position="209.202 21.083 150.652"  src="#saturn"></a-sphere>
+    <a-sphere id="planetmars" radius="6" position="-149.047 75.088 -172.765" src="#mars"></a-sphere>
 
     <a-sphere id="atmos" radius="25" position="29.380 0.24 -0.961" opacity ="0.4" rotation = "0 -126.9 0" src="#clouds">
         <a-animation attribute="rotation" dur="100000"  to="0 233.1 0" fill="backwards" ease="none" repeat="indefinite"></a-animation>
@@ -183,6 +186,40 @@
             <a-animation attribute="rotation" dur="100000" to="0 -360 0" fill="backwards" ease="none" repeat="indefinite"></a-animation>
         </a-sphere>
     </a-sphere>
+
+    <!-- Enter Kapsel -->
+   <!-- <a-image src="#enter"  id="entercap"  position="-7.957 16.275 1.084" rotation="0 -30 0" scale="0.368 0.368 0.368" visible="true">
+    </a-image> -->
+
+
+    <!-- Szenenwechsel -->
+
+    <a-image src="#enter" id="entercap"   position="-7.957 16.275 1.084" rotation="0 -30 0" scale="0.368 0.368 0.368"  visible="false">
+        <a-animation
+                id="entercapone"
+                attribute="visible"
+                dur="3000"
+                from="false"
+                to="true"
+                begin="98000"
+                repeat="indefinite">
+        </a-animation>
+    </a-image>
+
+
+    <!-- Transblock für Szenenwechsel -->
+    <a-image src="#enter" id="entercaptwo"  link="href: kapsel/kapsel_index.html" position="-7.958 16.275 1.279)" rotation="4.584 -7.391 0.630" scale="0.368 0.368 0.368" visible="true">
+        <a-animation
+                attribute="scale"
+                to="1.464 1.464 1.464"
+                id="szenenwechsel"
+               begin="100000"
+                >
+        </a-animation>
+    </a-image>
+
+
+
 </a-scene>
 </body>
 </html>
