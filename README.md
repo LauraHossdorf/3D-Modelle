@@ -1,16 +1,17 @@
 # Media Transformation 2 - Nachstellung des Films Gravity in Virtual Reality
 
 Gruppenmitglieder: Maria Angelidou, Lukas Fischer, Laura Hoßdorf, Leoni Salbert
+
 Dozent: Prof. Dr. Øyvind Eide und Dr. Jan Gerrit Wieners
 
 Empfohlener Webbrowser: Mozilla Firefox
 
  Szene 1: Weltraum
- - Szenerie im Weltalt: Zwei Astronauten reden miteinander; Meteoriteneinschlag zerstört Raumstation; Der männliche Astronaut droht in die endlosen Weiten des Weltalls zu verschwinden
+ - Szenerie im Weltalt: Zwei Astronauten reden miteinander; Meteoriteneinschlag zerstört Raumstation; Der männliche Astronaut droht in    die endlosen Weiten des Weltalls zu verschwinden
  - Hintergrundmusik: Sound aus dem Originalfilm, um Stimmung zu erzeugen und einen Einstieg in die Handlung zu gewährleisten
  - Kamera: Bewegt sich zunächst um den bedrohten Astronauten hin und her, um Schwerelosigkeit zu symbolisieren
  - Animation: Astronaut fliegt weg und verschwindet im Weltall
- - Kamerafahrt zur Station: Kamera, welche durch den Meteoriteneinschlag eine wackelige Position eingenommen hatte, beruhigt sich wieder und fährt zur rettenden Kapsel
+ - Kamerafahrt zur Station: Kamera, welche durch den Meteoriteneinschlag eine wackelige Position eingenommen hatte, beruhigt sich wieder    und fährt zur rettenden Kapsel
  - Szenenwechsel durch Klick auf das "Enter Only"-Bild
  
  Szene 2: Rettungskapsel
@@ -25,7 +26,9 @@ Empfohlener Webbrowser: Mozilla Firefox
  Szene 3: Insel
  - auf der Erde/ Insel angelangt fallen nach einiger Zeit die zerstörten Teile der Raumstation vom Himmel herab
  - Die Stimmung ist wie im Film düster: Dunkle Wolken am Himmel unterstützt durch animierten Regen und Soundeffekte
- - 
+ - Durch das Zentrieren des Cursors auf die zerstörten Teile und einen Rechtsklick kann man diese einsammeln
+ - Zentriert man nun auf das "WELCOME" Schild und klickt drauf, gelangt man in die Hütte
+ - Dort liegt ein Astronauten Buch auf dem Tisch welches beim zentrieren und anklicken den letzten Raumwechsel hervorruft
  
  Szene 4: Zimmer
  - Im Zimmer angekommen klingelt zunächst ein Wecker; eine verschlafene Stimme kommentiert die Situation
