@@ -5,6 +5,7 @@ Gruppenmitglieder: Maria Angelidou, Lukas Fischer, Laura Hoßdorf, Leoni Salbert
 Dozent: Prof. Dr. Øyvind Eide und Dr. Jan Gerrit Wieners
 
 Empfohlener Webbrowser: Mozilla Firefox
+
 Was in Chrome nicht funktioniert: Szene 2
 Was in Firefox nicht funktioniert: Speech command der Szene 3
 
