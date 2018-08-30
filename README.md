@@ -33,6 +33,7 @@ Was in Firefox nicht funktioniert: Speech command der Szene 3
  - Die Stimmung ist wie im Film düster: Dunkle Wolken am Himmel unterstützt durch animierten Regen und Soundeffekte
  - Durch das Zentrieren des Cursors auf die zerstörten Teile und einen Rechtsklick kann man diese einsammeln
  - Zentriert man nun auf das "WELCOME" Schild und klickt drauf, gelangt man in die Hütte
+ - Außerdem kann man bei der Verwendung von Chrome auch den Befehl "Go to cabin" und "Exit cabin" als Speech command benutzen (Zugriff      auf Mikrofon notwendig)
  - Dort liegt ein Astronauten Buch auf dem Tisch welches beim zentrieren und anklicken den letzten Raumwechsel hervorruft
  
  Szene 4: Zimmer
