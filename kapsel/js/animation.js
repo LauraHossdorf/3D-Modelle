@@ -1,6 +1,4 @@
-/**
- * Created by Laura on 24.08.2018.
- */
+
 /*AFRAME.registerComponent('event-animate-sprechblase',{
    shema:{
         target:{type: 'selector'}
