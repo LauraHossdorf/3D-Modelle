@@ -6,7 +6,7 @@ Dozent: Prof. Dr. Øyvind Eide und Dr. Jan Gerrit Wieners
 
 Empfohlener Webbrowser: Mozilla Firefox
 
-(Damit der VR-Modus automatisch beim laden jeder Szene eingeschaltet wird, haben wir diese Funktion im Code beigefügt. Da wir keine VR-Brillen haben können wir das nicht testen. Falls es also nicht funktioniert, kann man es auskommentieren.)
+(Damit der VR-Modus automatisch beim laden jeder Szene eingeschaltet wird, haben wir diese Funktion im Code beigefügt. Da wir keine VR-Brillen haben können wir das nicht testen. Deswegen haben wir sie erstmal auskommentiert, um unnötige Schwierigkeiten vorzubeugen.)
 
  Szene 1: Weltraum
  - Szenerie im Weltalt: Zwei Astronauten reden miteinander; Meteoriteneinschlag zerstört Raumstation; Der männliche Astronaut droht in    die endlosen Weiten des Weltalls zu verschwinden
