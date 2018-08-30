@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="js/rain.js"></script>
+    <script src="js/annyang.js"></script>
+    <script src="js/cabin.js" type="text/javascript"></script>
+    <script src="js/aframe-speech-command-component.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+</head>
+<body>
+<!--Regen-->
+<a-scene rain>
+    <!--Einbindung der in der Szene verwendeten Dateien-->
+    <a-assets>
+        <a-image id="enter" src="WOOD05L.JPG"></a-image> <!--Bild fuer Raumwechsel-->
+        <a-asset-item id="island" src="obj/szene2.obj"></a-asset-item>
+        <a-asset-item id="huette" src="obj/WoodenCabinObj.obj"></a-asset-item>
+        <a-asset-item id="mtl2" src="mtl/WoodenCabinObj.mtl"></a-asset-item>
+        <a-asset-item id="tisch" src="obj/tisch1.obj"></a-asset-item>
+        <a-asset-item id="mtl3" src="mtl/tisch1.mtl"></a-asset-item>
+        <a-asset-item id="book" src="obj/bookastro.obj"></a-asset-item>
+        <a-asset-item id="mtl4" src="mtl/bookastro.mtl"></a-asset-item>
+        <a-asset-item id="lampe" src="obj/oldlight.obj"></a-asset-item>
+        <a-asset-item id="mtl5" src="mtl/oldlight.mtl"></a-asset-item>
+        <a-asset-item id="chair" src="obj/chair1.obj"></a-asset-item>
+        <a-asset-item id="mtl6" src="mtl/chair1.mtl"></a-asset-item>
+        <a-asset-item id="ganzep" src="dae/GanzePlatte.dae"></a-asset-item>
+        <a-asset-item id="grossesTeil" src="dae/VRGrossesTeil.dae"></a-asset-item>
+        <a-asset-item id="kaputteplatte" src="dae/KaputtePlatte.dae"></a-asset-item>
+        <a-asset-item id="Stab" src="dae/stab.dae"></a-asset-item>
+        <a-asset-item id="kaputteplatte2" src="dae/KaputtePlatte2.dae"></a-asset-item>
+        <a-asset-item id="Stab1" src="dae/stab1.dae"> </a-asset-item>
+        <a-asset-item id="Platte" src="dae/platte.dae"></a-asset-item>
+        <a-asset-item id="kaputteplatte3" src="dae/KaputtePlatte3.dae"></a-asset-item>
+        <a-asset-item id="Platte1" src="dae/platte1.dae"></a-asset-item>
+        <a-asset-item id="grossesTeil1" src="dae/VRGrossesTeil1.dae"></a-asset-item>
+        <a-asset-item id="schild" src="obj/objWelcome.obj"></a-asset-item>
+        <a-asset-item id="mtl7" src="mtl/objWelcome.mtl"></a-asset-item>
+        <a-asset-item id="KaputtePlatte2" src="dae/KaputtePlatte2.dae"></a-asset-item>
+        <a-asset-item id="VRGrossesTeil" src="dae/VRGrossesTeil.dae"></a-asset-item>
+        <a-asset-item id="kaputteplatte" src="dae/KaputtePlatte.dae"></a-asset-item>
+        <a-asset-item id="stab" src="dae/stab.dae"></a-asset-item>
+        <!--Ton-->
+        <audio id="meer" src="sound/wellen.mp3"></audio>
+        <audio id="wind" src="sound/wind.mp3"></audio>
+        <audio id="regen" src="sound/rain.mp3"></audio>
+    </a-assets>
+    <a-entity id="annyang" annyang-speech-recognition></a-entity> <!--Speech command fuer Chrome-->
+    <a-sound src="#meer" autoplay="true" loop="true" volume="0.5"></a-sound>
+    <a-sound src="#wind" autoplay="true" loop="true" volume="0.5"></a-sound>
+    <a-sound src="#regen" autoplay="true" loop="true" volume="0.5"></a-sound>
+
+    <!--automatischer Einstieg in VR-->
+    <script>document.querySelector('a-scene').enterVR();</script>
+
+    <!--Animationen-->
+    <a-entity id="kamera"
+              position ="0 0 3"
+              rotation ="0 0 0"
+              camera
+              look-controls wasd-controls>
+       <a-animation attribute="position"
+                     delay="1000"
+                     dur="3000"
+                     easing="linear"
+                     to="0 2 -1"></a-animation>
+        <a-animation
+                id="camera1"
+                attribute="position"
+                delay="0"
+                begin="1000000000"
+                dur="8000"
+                easing="linear"
+                from="0 2 -1"
+                to="23.3290935519343 3 -11.205932981367637"></a-animation>
+        <a-animation
+                id="camera2"
+                attribute="position"
+                delay="0"
+                begin="1000000000"
+                dur="8000"
+                easing="linear"
+                from="23.3290935519343 3 -11.205932981367637"
+                to="0 2 -1"></a-animation>
+        <a-animation
+                id="camera3"
+                attribute="position"
+                delay="0"
+                begin="cabin1"
+                dur="8000"
+                easing="linear"
+                from="0 2 -1"
+                to="23.3290935519343 3 -11.205932981367637"></a-animation>
+        <a-cursor></a-cursor>
+    </a-entity>
+
+    <!--Positionierung der verwendeten Dateien-->
+    <a-sky id="skybox" src="mtl/Maps/himmel2.jpg"></a-sky>
+    <a-obj-model id="cabin1" position="23.3290935519343 0 -10.205932981367637" rotation="0 -64.72478385041762 0" scale="0.145 0.153 0.118" src="#huette" mtl="#mtl2" material="" obj-model="" event-set__click="target:#camera1; aevent:cabin"></a-obj-model>
+    <a-obj-model id="island2" position="0 -4.1028683684965745 0" scale="0.1 0.1 0.1" src="#island" mtl="mtl/szene2.mtl" rotation="0 179.85574218464194 0" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="table" position="24.441 0.16053645806532524 -12.161" rotation="-1.1960000000000002 -65.203800489367 0.37300000000000016" scale="0.1 0.12 0.1" src="#tisch" mtl="#mtl3" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="buch" position="25.341495428607058 2.0655935042592897 -13.091009889174074" rotation="-1.1959999999999997 -100.2293340530128 0.3729999999999999" scale="0.01 0.01 0.01" src="#book" mtl="#mtl4" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="lampe1" position="25.5575330840864 1.8588855228634031 -11.94978623497756" rotation="-1.196 -65.204 0.37300000000000005" scale="0.08623208406174157 0.09987205626724438 0.0911222512716087" src="#lampe" mtl="#mtl5" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="chair1" position="24.232207567530644 1.7961148596753174 -11.617521936277733" rotation="-1.8283632822614648 -23.72975647092918 3.2325908491005437" scale="1.3 1.7 1.3" src="#chair" mtl="#mtl6" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="schild5" position="17.416041547537137 -1.5071938716068622 -12.428744424214615" rotation="-1.8280000000000007 -57.96150306932989 3.2329999999999997" scale="0.2 0.3 0.2" src="#schild" mtl="#mtl7" material="" obj-model="" event-animate="target:#camera3; aevent:cabin1"></a-obj-model>
+    <a-collada-model id="GanzePlatte" src="#ganzep" position="-11.966 -8.158  25.768" rotation="8.391 0 0" scale="3 3 3" event-set__click="visible: false;"></a-collada-model>
+    <a-collada-model id="stab1" src="#Stab1" position="10.900 -2.823 30.251 " rotation=" -30.126 14.499 58.419" scale="15.006 15.006 15.006" event-set__click="visible: false;"> </a-collada-model>
+    <a-collada-model id="platte" src="#Platte" position=" -20.887 -8.741 -15.887" rotation="37.474 0.000 0.000" scale="10.000 10.000 10.000" event-set__click="visible: false;"></a-collada-model>
+    <a-collada-model id="KaputtePlatte3" src="#kaputteplatte3" position=" 44.834 16.688 -36.527" rotation="-23.890 -167.547 -42.264" scale="3.000 3.000 3.000" event-set__click="visible: false;"></a-collada-model>
+    <a-collada-model id="platte1" src="#Platte1" position="-0.857 2.971 3.751" rotation="43.146 -10.202 -20.109 " scale=" 10.000 10.000 10.000" event-set__click="visible: false;"></a-collada-model>
+    <a-collada-model id="VRGrossesTeil1" src="#grossesTeil1" position="1.018 -22.492 -21.740" rotation="38.226 -140.209 -126.522" scale="5.000 5.000 5.000" event-set__click="visible: false;"></a-collada-model>
+
+    <!--Speech command Chrome-->
+    <a-entity speech-command="command: go to cabin; type: attribute; targetElement: #camera1; attribute: begin; value: 0 ;"></a-entity>
+    <a-entity speech-command="command: exit cabin; type: attribute; targetElement: #camera2; attribute: begin; value: 0 ;"></a-entity>
+
+    <!--Animationen-->
+    <a-entity collada-model="#KaputtePlatte2" position="-18.181 32.727 4.892" rotation="0 0 -66.909" scale="3 3 3" event-set__click="visible: false;">
+        <a-animation attribute="visible" dur="1000" to="false"></a-animation>
+        <a-animation attribute="visible" begin="30000" to="true"></a-animation>
+        <a-animation attribute="position"
+                     from="-18.181 32.727 4.892"
+                     to="-18.181 11.993 4.892"
+                     begin="30000"
+                     dur="1000">
+        </a-animation>
+    </a-entity>
+    <a-entity collada-model="#VRGrossesTeil" position="-21.987 -23.462 -32.416" rotation="79.886 56.860 71.356" scale="5 5 5" event-set__click="visible: false;">
+        <a-animation attribute="visible" dur="1000" to="false"></a-animation>
+        <a-animation attribute="visible" begin="15000" to="true"></a-animation>
+        <a-animation attribute="position"
+                     from="-21.987 -23.462 -32.416"
+                     to="-21.987 -53.822 -32.416"
+                     begin="15000"
+                     dur="1000">
+        </a-animation>
+    </a-entity>
+    <a-entity collada-model="#kaputteplatte" position=" -0.054 6.922 -13.399 " rotation="62.224 -12.610 -18.456 " scale="3 3 3" event-set__click="visible: false;">
+        <a-animation attribute="visible" dur="1000" to="false"></a-animation>
+        <a-animation attribute="visible" begin="20000" to="true"></a-animation>
+        <a-animation attribute="position"
+                     from="-0.054 6.922 -13.399"
+                     to="-0.054 -9.018 -13.399"
+                     begin="20000"
+                     dur="1000">
+        </a-animation>
+    </a-entity>
+    <a-entity collada-model="#stab" position="-12.417 16.584 -8.895" rotation="-13.950 25.753 41.360" scale="15.006 15.006 15.006" event-set__click="visible: false;">
+        <a-animation attribute="visible" dur="1000" to="false"></a-animation>
+        <a-animation attribute="visible" begin="35000" to="true"></a-animation>
+        <a-animation attribute="position"
+                     from="-12.417 16.584 -8.895"
+                     to="-12.417 -9.195 -8.895"
+                     begin="35000"
+                     dur="1000">
+        </a-animation>
+    </a-entity>
+
+    <!--Szenenwechsel-->
+    <a-link href="../zimmer/zimmer.html" title="Zimmer" image="#enter" position="24.997 2.241 -12.787" rotation="0.49900000000000005 -64.754 0" scale="0.3 0.3 0.3" geometry="primitive:circle;segments:64" material="shader:portal;pano:WOOD05L.JPG;side:double" link="" visible="false"><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity><a-entity text="color:white;align:center;font:kelsonsans;value:Zimmer;width:4" position="0 1.5 0"></a-entity><a-entity geometry="primitive:sphere;segmentsWidth:64;segmentsHeight:64;phiLength:180;thetaLength:360" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" rotation="0 180 0" visible="false"></a-entity><a-entity geometry="primitive:sphere;radius:10;segmentsWidth:64;segmentsHeight:64" material="shader:portal;borderEnabled:0;pano:WOOD05L.JPG;side:back" visible="false"></a-entity></a-link>
+</a-scene>
+</body>
+</html>
