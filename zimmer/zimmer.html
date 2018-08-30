@@ -24,7 +24,9 @@
         <audio id="morning" src="sound/wakeup.mp3"></audio>
 
     </a-assets>
-
+    
+    <script>document.querySelector('a-scene').enterVR();</script>
+    
     <!-- Einbinden der Hintergrund-Sounds -->
 
     <a-entity id="alarmsignal" sound="src:#alarm; autoplay: true" loop="false" volume="0.5"></a-entity>
