@@ -1,222 +1,181 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Index</title>
-    <meta name="description" content="A-Frame">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
-    <script src="js/aframe-physics-components.min.js"></script>
-    <script src="https://unpkg.com/aframe-lensflare-component/dist/aframe-lensflare-component.min.js"></script>
-    <script src="https://cdn.rawgit.com/matthewbryancurtis/aframe-star-system-component/db4f1030/index.js"></script>
-    <script src="js/cannon.min.js"></script>
-    <script src="js/main.js"></script>
-
-</head>
-
-<body>
-<a-scene physics-world="gravity: 0 0 0">
-    <!--Bilder, Texturen, Modelle, etc. werden eingebunden-->
-    <!---->
-    <a-assets>
-
-        <img id="earth" src="jpg/erde.jpg">
-        <img id="moon" src="jpg/mond.jpg">
-        <img id="mars" src="jpg/mars.jpg">
-        <img id="saturn" src="jpg/saturn.jpg">
-        <img id="clouds" src="jpg/clouds.jpg">
-        <img id="flare-asset" src="jpg/lensflare.png">
-
-
-        <a-image id="enter" src="jpg/enter.png"></a-image>
-        <a-asset-item id="astronaut" src="dae/Astronaut.dae"></a-asset-item>
-        <a-asset-item id="raumstation" src="dae/Raumstation.dae"></a-asset-item>
-        <a-asset-item id="geruest1" src="dae/geruest2.dae"></a-asset-item>
-        <a-asset-item id="geruest2" src="dae/geruest3.dae"></a-asset-item>
-        <a-asset-item id="geruest3" src="dae/geruest4.dae"></a-asset-item>
-        <a-asset-item id="geruest4" src="dae/geruest5.dae"></a-asset-item>
-        <a-asset-item id="solarG" src="dae/solarteilgr.dae"></a-asset-item>
-        <a-asset-item id="solarG2" src="dae/solarteilgr2.dae"></a-asset-item>
-        <a-asset-item id="solarK" src="dae/solarteilkl.dae"></a-asset-item>
-        <a-asset-item id="solarK2" src="dae/solarteilkls.dae"></a-asset-item>
-        <a-asset-item id="solarZelleK" src="dae/solarzellenklein.dae"></a-asset-item>
-        <a-asset-item id="steg" src="dae/steg.dae"></a-asset-item>
-        <a-asset-item id="stegG" src="dae/steggr.dae"></a-asset-item>
-        <a-asset-item id="wandK" src="dae/wandkl.dae"></a-asset-item>
-        <a-asset-item id="kapsel" src="kapsel/kapsel.obj"></a-asset-item>
-        <a-asset-item id="mt1" src="kapsel/kapsel.mtl"></a-asset-item>
-        <a-sky id="galaxy" src="jpg/space.png"></a-sky>
-        <audio id="speech" src="sound/speech.mp3"></audio>
-        <audio id="slow_b" src="sound/slow_breath.mp3"></audio>
-    </a-assets>
-    <script>document.querySelector('a-scene').enterVR();</script>
-
-    <!-- Kamera -->
-    <a-entity id="kamera"
-              position ="-14.873 20 2.307"
-              rotation ="-15.252 -77.910 0"
-              camera
-              look-controls wasd-controls>
-        <a-cursor material="color: white"></a-cursor>
-        <a-sound src="#slow_b" autoplay="true" loop="true" volume="1"></a-sound>
-        <a-sound src="#speech" autoplay="true" loop="false" volume="5"></a-sound>
-
-
-        <!-- Kamerafahrt um Astronaut -->
-        <a-animation begin="4000"
-                     attribute="rotation"
-                     to="-18 -60 55"
-                     dur="76000"
-        >
-        </a-animation>
-
-        <!-- Kamerafahrt zur Station -->
-        <a-animation
-                begin="87000"
-                attribute="position"
-                from="-14.873 20 2.307"
-                to="-8.469 16.452 2.209"
-                dur="15000">
-        </a-animation>
-
-        <!-- Kamerafahrt zur Station - Kamera wieder gerade ausrichten -->
-        <a-animation
-                begin="87000"
-                attribute="rotation"
-                from="-18 -60 55"
-                to="0 -21.830 0"
-                dur="15000">
-        </a-animation>
-    </a-entity>
-
-    <!--Einbindung von Skyboy Hintergrund-->
-    <a-sky color="black"></a-sky>
-    <a-entity star-system></a-entity>
-
-
-    <!--Rettungskapsel wird eingebunden-->
-    <a-obj-model id="capsule" position="-7.731 16.642 0.672" rotation="-1.203 -44.493 177.967" scale="0.010 0.010 0.010" src="#kapsel" mtl="#mt1" material="" obj-model=""></a-obj-model>
-
-    <!--Meteoriten werden eingebunden-->
-
-
-    <a-entity id="m1" position="-6 40 0.986" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
-    <a-entity id="m2" position="-6 40 5.7" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
-    <a-entity id="m3" position="-8 40 -5" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
-
-    <!-- Raumstation ISS wird eingebunden durch einzelne Objekte, um zerstört werden zu können -->
-    <a-entity id="Iss_lowPoly" position="-0.028 -1.92 1.63" rotation="0 -7.85 1.85">
-        <a-entity id="" physics-body="boundingBox:0.5 0.5 10;mass:300" position="-6 20 0" geometry="primitive:box;depth:10;height:0.5;width:0.5" material="color:grey"></a-entity>
-
-
-        <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:grey"></a-entity>
-        <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 -5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:grey"></a-entity>
-
-        <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 20.761 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:grey"></a-entity>
-        <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 19.207 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:grey"></a-entity>
-
-        <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:grey"></a-entity>
-        <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 -5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:grey"></a-entity>
-
-        <a-entity id="" physics-body="boundingBox:0.5 2.5 0.5;mass:150" position="-7.056 20 0" geometry="primitive:cylinder;height:2.5;radius:0.25" material="color:grey"></a-entity>
-
-        <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.718 21.511 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:grey"></a-entity>
-        <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.686 18.422 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:grey"></a-entity>
-
-        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-3.198 20 5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
-        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-3.198 20 -5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
-        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-8.778 20 5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
-        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-8.778 20 -5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
-    </a-entity>
-
-
-
-
-
-    <a-entity id="astronaut" collada-model="#astronaut" position="-14.415 18.995 1.723" rotation="27.330 -97.861 -3.667" scale="0.5 0.5 0.5" src="#astronaut">
-        <a-animation
-                attribute="position"
-                from="-14.415 18.995 1.723"
-                to="-14.515 19.215 1.823"
-                direction="alternate"
-                repeat="40"
-                dur="2000"
-        ></a-animation>
-
-        <a-animation
-                begin="80000"
-                attribute="position"
-
-                to="16.759 -2.148 -10.792"
-                dur="10000">
-        </a-animation>
-
-        <!--Astronaut Rotation-->
-        <a-animation
-                attribute="rotation"
-                dur="10000"
-                to="0 0 360"
-                begin="80000">
-        </a-animation>
-
-        <!--Astronaut wird kleiner-->
-        <a-animation
-                attribute="scale"
-                begin="80000"
-                dur="400000"
-                to="0 0 0">
-        </a-animation>
-
-
-    </a-entity>
-
-
-    <!--Einbinden von Sonne, Mars, Saturn, Mond und Erdatmosphäre-->
-    <a-sphere id="sonne"
-              radius ="0.05"
-              lensflare="createLight:true; intensity:5; lightType:spot; lightDistance:120; lightAngle:1 relative: true; src: #flare-asset; position:0.0 0.0 0.06; lightColor:white"
-              position="-25 25 -23.240"
-              rotation ="0 -15 0">
-    </a-sphere>
-
-
-    <a-sphere id="mond" radius="4" position="12.401 35.088 -61.392" opacity="0.5"  src="#moon"></a-sphere>
-    <a-sphere id="planetsaturn" radius="8" position="209.202 21.083 150.652"  src="#saturn"></a-sphere>
-    <a-sphere id="planetmars" radius="6" position="-149.047 75.088 -172.765" src="#mars"></a-sphere>
-
-    <a-sphere id="atmos" radius="25" position="29.380 0.24 -0.961" opacity ="0.4" rotation = "0 -126.9 0" src="#clouds">
-        <a-animation attribute="rotation" dur="100000"  to="0 233.1 0" fill="backwards" ease="none" repeat="indefinite"></a-animation>
-        <a-sphere id="erde" radius ="24" src="#earth">
-            <a-animation attribute="rotation" dur="100000" to="0 -360 0" fill="backwards" ease="none" repeat="indefinite"></a-animation>
-        </a-sphere>
-    </a-sphere>
-
-    <!-- Enter Kapsel -->
-    <!-- <a-image src="#enter"  id="entercap"  position="-7.957 16.275 1.084" rotation="0 -30 0" scale="0.368 0.368 0.368" visible="true">
-     </a-image> -->
-
-
-    <!-- Szenenwechsel -->
-
-    <a-image src="#enter" id="entercap"   position="-7.957 16.275 1.084" rotation="0 -30 0" scale="0.368 0.368 0.368"  visible="false">
-        <a-animation
-                id="entercapone"
-                attribute="visible"
-                dur="3000"
-                from="false"
-                to="true"
-                begin="98000"
-                repeat="indefinite">
-        </a-animation>
-    </a-image>
-
-
-    <!-- Transblock für Szenenwechsel -->
-    <a-link href="kapsel/kapsel_index.html" title="Kapsel" image="#enter" position="-7.958 16.275 1.180" rotation="2.177 -27.101 1.719" scale="0.589 0.589 0.589" visible="false"></a-link>
-
-
-
-
-</a-scene>
-</body>
-</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gravity</title>
+    <meta name="description" content="A-Frame">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="firstscene/js/aframe-physics-components.min.js"></script>
+    <script src="https://unpkg.com/aframe-lensflare-component/dist/aframe-lensflare-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/matthewbryancurtis/aframe-star-system-component/db4f1030/index.js"></script>
+    <script src="firstscene/js/cannon.min.js"></script>
+    <script src="firstscene/js/main.js"></script>
+</head>
+<body>
+<a-scene physics-world="gravity: 0 0 0">
+
+    <!--Bilder, Texturen, Modelle, etc. werden eingebunden-->
+
+    <a-assets>
+        <img id="earth" src="firstscene/jpg/erde.jpg">
+        <img id="moon" src="firstscene/jpg/mond.jpg">
+        <img id="mars" src="firstscene/jpg/mars.jpg">
+        <img id="saturn" src="firstscene/jpg/saturn.jpg">
+        <img id="clouds" src="firstscene/jpg/clouds.jpg">
+        <img id="flare-asset" src="firstscene/jpg/lensflare.png">
+        <a-image id="enter" src="firstscene/jpg/enter.png"></a-image>
+        <a-asset-item id="astronaut" src="firstscene/dae/Astronaut.dae"></a-asset-item>
+        <a-asset-item id="kapsel" src="kapsel/kapsel.obj"></a-asset-item>
+        <a-asset-item id="mt1" src="kapsel/kapsel.mtl"></a-asset-item>
+        <a-sky id="galaxy" src="firstscene/jpg/space.png"></a-sky>
+        <audio id="speech" src="firstscene/sound/speech.mp3"></audio>
+        <audio id="slow_b" src="firstscene/sound/slow_breath.mp3"></audio>
+    </a-assets>
+    <script>document.querySelector('a-scene').enterVR();</script>
+
+
+    <!-- Kamera wird vor Astronaut positioniert -->
+    <a-entity id="kamera"
+              position ="-14.873 20 2.307"
+              rotation ="-15.252 -77.910 0"
+              camera
+              look-controls wasd-controls>
+        <a-cursor material="color: white"></a-cursor>
+        <a-sound src="#slow_b" autoplay="true" loop="true" volume="1"></a-sound>
+        <a-sound src="#speech" autoplay="true" loop="false" volume="5"></a-sound>
+        <!-- Kamerafahrt um Astronaut -->
+        <a-animation begin="4000"
+                     attribute="rotation"
+                     to="-18 -60 55"
+                     dur="76000"
+        >
+        </a-animation>
+        <!-- Kamerafahrt zur Station, nachdem Astronaut verloren ist -->
+        <a-animation
+                begin="87000"
+                attribute="position"
+                from="-14.873 20 2.307"
+                to="-8.469 16.452 2.209"
+                dur="15000">
+        </a-animation>
+        <!-- Kamerafahrt zur Station - Kamera wieder gerade ausrichten -->
+        <a-animation
+                begin="87000"
+                attribute="rotation"
+                from="-18 -60 55"
+                to="0 -21.830 0"
+                dur="15000">
+        </a-animation>
+    </a-entity>
+
+    <!--Einbindung von Skyboy Hintergrund-->
+    <a-sky color="black"></a-sky>
+    <a-entity star-system></a-entity>
+
+    <!--Rettungskapsel wird eingebunden-->
+    <a-obj-model id="capsule" position="-7.731 16.642 0.672" rotation="-1.203 -44.493 177.967" scale="0.010 0.010 0.010" src="#kapsel" mtl="#mt1" material="" obj-model=""></a-obj-model>
+
+
+    <!--Meteoriten werden eingebunden-->
+    <a-entity id="m1" position="-6 40 0.986" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
+    <a-entity id="m2" position="-6 40 5.7" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
+    <a-entity id="m3" position="-8 40 -5" physics-body="boundingBox:0.25 0.25 0.25; mass:200" geometry="primitive: sphere;radius:0.25" material="color: grey"></a-entity>
+
+
+    <!-- Raumstation ISS wird eingebunden durch einzelne Objekte, um zerstört werden zu können -->
+    <a-entity id="Iss_lowPoly" position="-0.028 -1.92 1.63" rotation="0 -7.85 1.85">
+        <a-entity id="" physics-body="boundingBox:0.5 0.5 10;mass:300" position="-6 20 0" geometry="primitive:box;depth:10;height:0.5;width:0.5" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.5 0.5 1;mass:200" position="-6 20 -5.795" geometry="primitive:box;depth:1;height:0.5;width:0.5" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 20.761 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.7 1 0.7;mass:150" position="-6 19.207 0" geometry="primitive:cylinder;height:1;radius:0.25" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.5 0.25 0.25;mass:200" position="-5.987 20.022 -5.146" geometry="primitive:box;depth:0.25;height:0.25;width:0.5" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:0.5 2.5 0.5;mass:150" position="-7.056 20 0" geometry="primitive:cylinder;height:2.5;radius:0.25" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.718 21.511 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:2 0.5 0.5;mass:200" position="-6.686 18.422 0" geometry="primitive:box;depth:0.5;height:0.5;width:2" material="color:grey"></a-entity>
+        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-3.198 20 5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
+        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-3.198 20 -5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
+        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-8.778 20 5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
+        <a-entity id="" physics-body="boundingBox:5 0.25 2;mass:150" position="-8.778 20 -5.163" geometry="primitive:box;depth:2;height:0.25;width:5" material="color:blue"></a-entity>
+    </a-entity>
+
+
+    <!-- Einbinden des Astronauten, welcher sich vor der Kamera auf und ab bewegt; Symbolisieren von Schwerelosigkeit -->
+    <a-entity id="astronaut" collada-model="#astronaut" position="-14.415 18.995 1.723" rotation="27.330 -97.861 -3.667" scale="0.5 0.5 0.5" src="#astronaut">
+        <a-animation
+                attribute="position"
+                from="-14.415 18.995 1.723"
+                to="-14.515 19.215 1.823"
+                direction="alternate"
+                repeat="40"
+                dur="2000"
+        ></a-animation>
+
+        <!-- Astronaut beginnt wegzufliegen -->
+        <a-animation
+                begin="80000"
+                attribute="position"
+                to="16.759 -2.148 -10.792"
+                dur="10000">
+        </a-animation>
+
+        <!--Astronaut dreht sich beim Abgang schwerenlos weg -->
+        <a-animation
+                attribute="rotation"
+                dur="10000"
+                to="0 0 360"
+                begin="80000">
+        </a-animation>
+
+        <!--Astronaut verschwindet in der Tiefe des Weltalls und ist nicht mehr zu sehen-->
+        <a-animation
+                attribute="scale"
+                begin="80000"
+                dur="400000"
+                to="0 0 0">
+        </a-animation>
+    </a-entity>
+
+    <!--Einbinden von Sonne, Mars, Saturn, Mond und Erdatmosphäre-->
+    <a-sphere id="sonne"
+              radius ="0.05"
+              lensflare="createLight:true; intensity:5; lightType:spot; lightDistance:120; lightAngle:1 relative: true; src: #flare-asset; position:0.0 0.0 0.06; lightColor:white"
+              position="-25 25 -23.240"
+              rotation ="0 -15 0">
+    </a-sphere>
+
+    <a-sphere id="mond" radius="4" position="12.401 35.088 -61.392" opacity="0.5"  src="#moon"></a-sphere>
+    <a-sphere id="planetsaturn" radius="8" position="209.202 21.083 150.652"  src="#saturn"></a-sphere>
+    <a-sphere id="planetmars" radius="6" position="-149.047 75.088 -172.765" src="#mars"></a-sphere>
+
+    <a-sphere id="atmos" radius="25" position="29.380 0.24 -0.961" opacity ="0.4" rotation = "0 -126.9 0" src="#clouds">
+        <a-animation attribute="rotation" dur="100000"  to="0 233.1 0" fill="backwards" ease="none" repeat="indefinite"></a-animation>
+        <a-sphere id="erde" radius ="24" src="#earth">
+            <a-animation attribute="rotation" dur="100000" to="0 -360 0" fill="backwards" ease="none" repeat="indefinite"></a-animation>
+        </a-sphere>
+    </a-sphere>
+
+
+    <!-- Bild mit der Aufschrift "Enter Only" wird eingebunden; zu Beginn der Szene nicht sichtbar -->
+    <a-image src="#enter" id="entercap"   position="-7.957 16.275 1.084" rotation="0 -30 0" scale="0.368 0.368 0.368"  visible="false">
+
+        <!-- Bild mit der Aufschrift "Enter Only" wird erst nach Eintreffen der Kamera an der Station sichtbar -->
+        <a-animation
+                id="entercapone"
+                attribute="visible"
+                dur="3000"
+                from="false"
+                to="true"
+                begin="98000"
+                repeat="indefinite">
+        </a-animation>
+    </a-image>
+
+    <!-- Unsichtbares Bild für Szenenwechsel; etwas größer skaliert, damit der Wechsel leichter erfolgen kann-->
+    <a-link href="kapsel/kapsel_index.html" title="Kapsel" image="#enter" position="-7.958 16.275 1.180" rotation="2.177 -27.101 1.719" scale="0.589 0.589 0.589" visible="false"></a-link>
+
+</a-scene>
+</body>
+</html>
