@@ -35,14 +35,14 @@
         <video id="screen3" autoplay loop="true" src="screen3_earth.mp4" ></video>
         <audio id="alarm" src="alarm.mp3"  autoplay="true" loop="true"></audio>
         <a-image id="sos" src="sos.png"></a-image>
-        <a-image id="opendoor" src="open_door.png"></a-image>
+        <a-image id="exit" src="exit.png"></a-image>
     </a-assets>
 
 
     <a-sky id="skybox" color="#000"></a-sky>
     <a-obj-model id="capsule" position="0.475 0.161 0.845" rotation="-1.196 65.204 0.373" scale="0.177 0.212 0.177" src="#kapsel" mtl="#mt1" material="" obj-model=""></a-obj-model>
     <a-collada-model id="funkgeraet" position="-6.549 5.185 5.218" rotation="0.763 12.515 0.445" scale="0.296 0.354 0.296" src="#funk" ></a-collada-model>
-    <a-collada-model id="button" position="-3.516 5.762 8.644" rotation="71.958 80.775 -74.219" scale="0.081 0.097 0.081" src="#knopf"></a-collada-model>
+    <a-collada-model id="button" position="-3.516 6.755 8.644" rotation="71.958 80.775 -74.219" scale="0.081 0.097 0.081" src="#knopf"></a-collada-model>
     <a-collada-model id="sosschrift" position="0.127 4.881 11.043" rotation="84.373 16.460 -137.360" scale="0.177 0.212 0.177" src="#sos"></a-collada-model>
     <a-collada-model id="bildschirm1" position="2.860 7.739 -9.479" rotation="-0.181 101.069 93.785" scale="0.067 0.120 0.100" src="#bild1"></a-collada-model>
     <a-collada-model id="bildschirm2" position="10.240 6.264 -0.166" rotation="90.000 -132.330 0.000" scale="0.233 0.278 0.150" src="#bild2"></a-collada-model>
@@ -56,7 +56,7 @@
     <a-video  id="video4" src="#screen3" width="16" height="9" position="4.189 11.399 5.558" rotation="0 45.977 0" scale="0.418 0.481 0.418"></a-video>
 
 
-        <a-camera position="-2.128 8.804 0.000" rotation="16.501 11.918 0.000" scale="1.000 1.000 1.000">
+        <a-camera position="-2.128 8.804 2.603" rotation="16.501 11.918 0.000" scale="1.000 1.000 1.000">
             <a-cursor></a-cursor>
         </a-camera>
 
@@ -96,9 +96,9 @@
     <a-entity
             collada-model="#blase1"
             id="sprechblase1"
-            position="43.785 12.317 7.017"
+            position="18.624 12.500 2.196"
             rotation="-2.857 99.920 0.646"
-            scale="0.128 0.153 0.128"
+            scale="0.063 0.076 0.063"
             event-animate-text="target:#text1; aevent1:see1"
             event-animate-text1="target:#text2; aevent2:see2">
 
@@ -111,9 +111,9 @@
 
     <a-entity            collada-model="#blase2"
                          id="sprechblase2"
-                         position="16.094 7.651 -4.105"
+                         position="1.870 6.635 -5.411"
                          rotation="-2.857 99.920 0.646"
-                         scale="0.100 0.100 0.100"
+                         scale="0.072 0.072 0.072"
                          event-animate-text="target:#text3; aevent1:see3"
                          event-animate-text1="target:#text4; aevent2:see4"
                          visible="false">
@@ -127,9 +127,9 @@
 
     <a-entity collada-model="#blase3"
               id="sprechblase3"
-              position="14.744 7.040 -11.119"
+              position="-5.606 6.300 -5.817"
               rotation="-2.857 99.920 0.646"
-              scale="0.128 0.128 0.128"
+              scale="0.092 0.092 0.092"
               src="#blase3"
               event-animate-text="target:#text5; aevent1:see5"
               event-animate-text1="target:#text6; aevent2:see6"
@@ -145,9 +145,9 @@
 
     <a-entity collada-model="#blase4"
               id="sprechblase4"
-              position="16.587 7.909 -2.005"
+              position="2.140 11.063 -4.720"
               rotation="-2.857 99.603 0.646"
-              scale="0.100 0.100 0.100"
+              scale="0.041 0.041 0.041"
               src="#blase4"
               event-animate-text="target:#text7; aevent1:see7"
               event-animate-text1="target:#text8; aevent2:see8"
@@ -163,9 +163,9 @@
 
     <a-entity collada-model="#blase5"
               id="sprechblase5"
-              position="10.061 11.464 -9.043"
+              position="-1.225 11.464 -3.247"
               rotation="-2.857 99.920 0.646"
-              scale="0.100 0.100 0.100"
+              scale="0.051 0.051 0.051"
               src="#blase5"
               event-animate-text="target:#text9; aevent1:see9"
               event-animate-text1="target:#text10; aevent2:see10"
@@ -181,9 +181,9 @@
 
     <a-entity collada-model="#blase6"
               id="sprechblase6"
-              position="16.245 14.120 -0.105"
+              position="6.098 13.062 -8.295"
               rotation="-2.857 99.920 0.646"
-              scale="0.100 0.100 0.100"
+              scale="0.061 0.061 0.061"
               src="#blase6"
               event-animate-text="target:#text11; aevent1:see11"
               event-animate-text1="target:#text12; aevent2:see12"
@@ -198,8 +198,8 @@
 
     <a-entity collada-model="#blase7"
               id="sprechblase7"
-              position="13.733 6.332 -10.490"
-              rotation="-2.857 99.920 0.646"
+              position="-15.348 12.337 -4.410"
+              rotation="-2.857 -116.347 0.646"
               scale="0.100 0.100 0.100"
               src="#blase7"
               event-animate-text="target:#text13; aevent1:see13"
@@ -210,24 +210,12 @@
     </a-entity>
 
 
-     <a-image id="nextsceneone" src="#opendoor" position="-5.034 7.230 7.030" rotation="-9.492 -26.475 -6.985" scale="1.724 1.379 1724" visible="false">
-         <a-animation
-                 attribute="visible"
-                 from="false"
-                 to="false"
-                 delay="50000">
-         </a-animation>
+     <a-image id="nextsceneone" src="#exit" position="-5.034 7.230 7.030" rotation="-9.492 -26.475 -6.985" scale="1.724 1.379 1724" visible="false">
      </a-image>
 
      <!-- Transblock für Szenenwechsel -->
 
-    <a-image id="nextscenetwo" link="href: ../Insel/island.html" src="#opendoor" position="-4.808 7.457 6.447" rotation="0 -23.917 0" scale="2.349 2.349 2.349" visible="false">
-        <a-animation
-                attribute="visible"
-                from="false"
-                to="false"
-                delay="52000">
-        </a-animation>
+    <a-image id="nextscenetwo" link="href: ../Insel/island.html" src="#opendoor" position="-4.808 7.457 7.004" rotation="0 -23.917 0" scale="3.159 3.159 3.159" visible="false">
     </a-image>
 
 
