@@ -23,7 +23,7 @@ Empfohlener Webbrowser: Mozilla Firefox
  - Klick auf den roten SOS-Knopf (oder etwas darüber) Szenenwechsel auf die Insel
  
  Szene 3: Insel
- - auf der Insel angelangt fallen nach einiger Zeit die zerstörten Teile der Raumstation vom Himmel herab
+ - auf der Erde/ Insel angelangt fallen nach einiger Zeit die zerstörten Teile der Raumstation vom Himmel herab
  - Die Stimmung ist wie im Film düster: Dunkle Wolken am Himmel unterstützt durch animierten Regen und Soundeffekte
  - 
  
