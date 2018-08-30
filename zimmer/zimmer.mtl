@@ -1,0 +1,134 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 17.08.2018 00:21:30
+
+newmtl 13___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/laminate.jpg
+	map_Kd textures/laminate.jpg
+
+newmtl 19___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/walls.jpg
+	map_Kd textures/walls.jpg
+
+newmtl 03___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/wood.jpg
+	map_Kd textures/wood.jpg
+
+newmtl 14___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/door.jpg
+	map_Kd textures/door.jpg
+
+newmtl 01___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/galaxy.jpg
+	map_Kd textures/galaxy.jpg
+
+newmtl 02___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/linen.jpg
+	map_Kd textures/linen.jpg
+
+newmtl 07___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/oldwood.jpg
+	map_Kd textures/oldwood.jpg
+
+newmtl 08___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/aluminum.jpg
+	map_Kd textures/aluminum.jpg
+
+newmtl 09___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/milkyglass.jpg
+	map_Kd textures/milkyglass.jpg
+
+newmtl 15___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/window.jpg
+	map_Kd textures/window.jpg
+
+newmtl 21___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/schirm.jpg
+	map_Kd textures/schirm.jpg
+
+newmtl 20___Default
+	Ns 1
+    	Ni 0
+    	d 1
+    	Ka 0 0 0
+    	Kd 1 1 1
+    	Ks 1 1 1
+    	Km 0
+	map_Ka textures/light.jpg
+	map_Kd textures/light.jpg

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
+</head>
+<body>
+
+<a-scene>
+    <!-- Laden des Zimmers, des Buches und des Weckers und von Sound und Hintergrund -->
+    <a-assets>
+        <a-asset-item id="zimmer" src="zimmer.obj"></a-asset-item>
+        <a-asset-item id="mt1" src="zimmer.mtl"></a-asset-item>
+        <a-asset-item id="book" src="bookastro.obj"></a-asset-item>
+        <a-asset-item id="mt2" src="bookastro.mtl"></a-asset-item>
+        <a-asset-item id="clock" src="dae/clock.dae"></a-asset-item>
+        <a-sky id="himmel" src="textures/himmel.jpg"></a-sky>
+        <audio id="alarm" src="sound/alarm.mp3"></audio>
+        <audio id="back" src="sound/background.mp3"></audio>
+        <audio id="morning" src="sound/wakeup.mp3"></audio>
+
+    </a-assets>
+
+    <!-- Einbinden der Hintergrund-Sounds -->
+
+    <a-entity id="alarmsignal" sound="src:#alarm; autoplay: true" loop="false" volume="0.5"></a-entity>
+    <a-entity id="background" sound="src:#back; autoplay: true" loop="false" volume="2"></a-entity>
+    <a-entity id="speech" sound="src:#morning; autoplay: true" loop="false" volume="20"></a-entity>
+
+
+    <!-- Kamera liegt im Bett, und fährt nach kurzer Zeit rüber zum Wecker und Buch -->
+
+    <a-entity id="kamera" position="-8.313 4.185 -8.026" rotation ="0.000 -100.268 0.000">
+        <a-camera look-controls wasd-controls></a-camera>
+
+        <a-animation attribute="position"
+                     delay="3000"
+                     id="kamera"
+                     from="-8.313 4.185 -8.026"
+                     to="1.766 6.985 -2.478"
+                     dur="20000">
+        </a-animation>
+
+    </a-entity>
+
+    <!--Einbindung von Skyboy Hintergrund-->
+    <a-sky src="#himmel"></a-sky>
+
+    <!-- Einbinden des Zimmers, des Buchs und des Weckers -->
+
+    <a-obj-model id="room" position="5.419 0.161 -4.740" rotation="-1.196 -65.20 0.373" scale="0.143 0.171 0.143" src="#zimmer" mtl="#mt1" material="" obj-model=""></a-obj-model>
+    <a-obj-model id="buch" position="6.897 5.004 -2.603" rotation="86.717 -112.201 0.000" scale="0.030 0.030 0.030" src="#book" mtl="#mt2" material="" obj-model=""></a-obj-model>
+    <a-collada-model id="wecker" position="6.285 3.881 -4.837" rotation="-1.987 -58.465 -2.495" scale="10 10 10" src="#clock"></a-collada-model>
+
+</a-scene>
+</body>
+</html>
