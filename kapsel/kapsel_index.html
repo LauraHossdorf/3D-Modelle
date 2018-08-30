@@ -31,12 +31,13 @@
         <video id="screen1" autoplay loop="true" src="video/screen1.mp4" ></video>
         <video id="screen2" autoplay loop="true" src="video/screen2.mp4" ></video>
         <video id="screen3" autoplay loop="true" src="video/screen3_earth.mp4" ></video>
-        <audio id="alarm" src="sound/alarm.mp3"  autoplay="true" loop="true"></audio>
+        <audio id="alarm" src="sound/alarm.mp3"></audio>
         <a-image id="exit" src="textures/exit.png"></a-image>
     </a-assets>
     
      <!--<script>document.querySelector('a-scene').enterVR();</script>-->
 
+    <a-sound src="#alarm" autoplay="true" loop="true" volume="0.2"></a-sound>
     <!-- Einbinden "dach" der Kapsel/ Decke -->
     <a-sky id="skybox" color="#000"></a-sky>
 
