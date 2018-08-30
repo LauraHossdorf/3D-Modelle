@@ -44,3 +44,4 @@ Was in Firefox nicht funktioniert: Speech command der Szene 3
 
 Allgemeine Projekt- und Ordnerstruktur:
 Jede Szene besitzt seinen eigenen Ordner mit einigen Unterordner. Diese Struktur wurde gewählt, damit auch einzelne Ordner beziehungsweise Szenen für den Nutzer verfügbar sind. 
+Der Ordner "models" enthält alle 3D-Modelle (Sketch Up, Blender und 3ds Max) und hat nichts mit der sonstigen Ordnerstruktur zu tun. 
