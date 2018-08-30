@@ -32,8 +32,8 @@
         <audio id="speech" src="firstscene/sound/speech.mp3"></audio>
         <audio id="slow_b" src="firstscene/sound/slow_breath.mp3"></audio>
     </a-assets>
+    
     <script>document.querySelector('a-scene').enterVR();</script>
-
 
     <!-- Kamera wird vor Astronaut positioniert -->
     <a-entity id="kamera"
@@ -42,8 +42,8 @@
               camera
               look-controls wasd-controls>
         <a-cursor material="color: white"></a-cursor>
-        <a-sound src="#slow_b" autoplay="true" loop="true" volume="1"></a-sound>
-        <a-sound src="#speech" autoplay="true" loop="false" volume="5"></a-sound>
+        <a-sound src="#slow_b" autoplay="true" loop="true" volume="0.3"></a-sound>
+        <a-sound src="#speech" autoplay="true" loop="false" volume="1"></a-sound>
         <!-- Kamerafahrt um Astronaut -->
         <a-animation begin="4000"
                      attribute="rotation"
