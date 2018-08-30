@@ -7,13 +7,9 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
     <script src="js/animation.js"></script>
-
 </head>
 <body>
-
 <a-scene>
-
-
     <!-- Einbinden der Kapsel, der Bildschirme samt Video, Sound, Sprechblasen und sonstige Objekte -->
     <a-assets>
         <a-asset-item id="kapsel" src="kapsel.obj"></a-asset-item>
@@ -39,6 +35,7 @@
         <a-image id="sos" src="textures/sos.png"></a-image>
         <a-image id="exit" src="textures/exit.png"></a-image>
     </a-assets>
+    
      <script>document.querySelector('a-scene').enterVR();</script>
 
     <!-- Einbinden "dach" der Kapsel/ Decke -->
